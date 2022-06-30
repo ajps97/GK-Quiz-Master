@@ -1,0 +1,49 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Profile{% endblock title %}
+{% block content %}
+
+
+
+<h3>Welcome, {{request.user}}</h3>
+<div class="container-fluid">
+  <div class="row">
+
+    <div class="col ">
+      <div class="card mx-auto my-5 bg-danger bg-gradient text-light" style="width: 15rem;height:15rem;">
+        <img src="{{ MEDIA_URL }}/clipboard-check.svg" class="img-fluid mx-auto py-2" width="50%" >
+          <div class="card-body mx-auto">
+            <h3>Total Exams : {{num_exams}}</h3>
+          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mx-auto my-5 bg-primary bg-gradient text-light" style="width: 15rem;height:15rem;">
+        <img src="{{ MEDIA_URL }}/trophy.svg" class="img-fluid mx-auto py-2" width="50%" >
+          <div class="card-body mx-auto">
+            <h3>Top Score : {{top_score}}</h3>
+          </div>
+      </div>
+    </div>
+    <div class="col">
+      <div class="card mx-auto my-5 bg-success bg-gradient text-light" style="width: 15rem;height:15rem;">
+        <img src="{{ MEDIA_URL }}/graph-up.svg" class="img-fluid mx-auto py-2" width="50%">
+          <div class="card-body mx-auto">
+            <h3>Average : {{average_score}}</h3>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container">
+  <div class="card">
+    <div class="card-body mx-auto">
+      <h4>Start a new test now....</h4>
+      <a href="{%url 'exam:index'%}" class="btn btn-primary" style="float: right;">Start Test</a>
+    </div>
+  </div>
+</div>
+
+  
+  {% endblock content %}

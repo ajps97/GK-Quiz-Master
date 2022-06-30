@@ -1,0 +1,62 @@
+
+{% extends "base_without_navbar.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Login{% endblock title %}
+{% block content %}
+
+
+
+
+<h1>* Improve your Knowledge<br>
+	* Practice for competitive exams<br>
+	* Track your progress</h1>
+<div style="float: right;">Don't have an account? <a href="{% url 'home:signup_view' %}" > Sign up</a></button>
+
+
+</div>
+	<div class="container">
+		<div  class="carousel slide w-50" data-bs-ride="carousel">
+			<div class="carousel-inner">
+			<div class="carousel-item active" data-bs-interval="3000">
+				<h1>Science</h1>
+			</div>
+			<div class="carousel-item" data-bs-interval="3000">
+				<h1>History</h1>
+			</div>
+			<div class="carousel-item " data-bs-interval="3000">
+				<h1>English</h1>
+			</div>
+			<div class="carousel-item " data-bs-interval="3000">
+				<h1>General Knowledge</h1>
+			</div>
+			</div>
+		</div>
+	</div>
+<form action="" method="POST" style="width:100%;max-width:330px;padding:15px;
+margin: auto;">
+
+<div class="mt-auto" style="float: right;">
+	{% if messages %}
+	
+		{% for message in messages %}
+		
+			<h4 style="color:#e8491d;">{{message}}</h4>
+
+		{% endfor %}
+	{% endif %}
+</div>
+	
+	
+	{% csrf_token %}
+	{{form|crispy}}
+	<button type="submit" class="btn btn-dark mt-1 " style="float: right;"> Login</button>
+	</div>
+</form>
+
+
+
+{% endblock content %}
+
+
+
+	

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Signup{% endblock title %}
+{% block content %}
+
+
+
+<form class="mt-5" action="" method="POST" style="width:100%;max-width:500px;padding:15px;
+margin: auto;">
+	
+	<div class="mt-auto" style="float: right;">
+		{% if messages %}
+		
+			{% for message in messages %}
+			
+				<h4 style="color:#e8491d;">{{message}}</h4>
+
+			{% endfor %}
+		{% endif %}
+</div>
+
+	{% csrf_token %}
+	{{form|crispy}}
+	<button type="submit" class="btn btn-dark mt-1 " style="float: right;"> Create</button>
+	<a class="btn btn-primary mt-1" style="float: left;" href="{% url 'quiz_master:questions_view' %}">Cancel</a>
+
+	</div>
+	
+</form>
+
+
+{% endblock content %}

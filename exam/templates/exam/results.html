@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block title %}Results{% endblock title %}
+{% block content %}
+
+
+
+<div class="card text-center">
+  <div class="card-header">
+    
+    Category : {{category}}
+   
+  </div>
+    <div class="card-body">
+      <h5 class="card-title"><h5>Your Score is : {{score}}</h5>
+      <p class="card-text">Please review your answers given below</p>
+      <a href="{%url 'exam:index'%}" class="btn btn-primary">Try another exam</a>
+      <a href="{%url 'user_profile:index'%}" class="btn btn-primary">Goto Profile</a>
+    </div>
+</div>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Question</th>
+        <th scope="col">Your Answer</th>
+        <th scope="col">Correct Answer</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for ans in answers %}
+        
+      <tr id="rows">
+        <th scope="row">{{ans.question_no}}</th>
+        <td>{{ans.question_text}}</td>
+        <td>{{ans.selected_choice}}</td>
+        <td>{{ans.answer}}</td>
+        <td><a href="https://www.google.com/search?q={{ans.question_text}}" target="_blank">Additional Info</a></td>
+      </tr>
+
+        {% endfor %}
+    </tbody>
+  </table>
+
+  
+{% endblock content %}
+
+{% block scripts %}
+<script src="{% static 'js/results.js'%}">
+
+</script>
+{% endblock scripts %}
